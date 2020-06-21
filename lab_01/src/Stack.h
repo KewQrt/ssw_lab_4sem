@@ -16,7 +16,7 @@ public:
 	T pop();
 	T peek();
 	int count();
-	friend void swap(Stack<T>& m1, Stack<T>& m2) //функция обмена данными между структурами;
+	friend void swap(Stack<T>& m1, Stack<T>& m2) //function of data exchange between structures
 	{
 		if (m1.m_Size == m2.m_Size)
 		{
@@ -136,12 +136,12 @@ public:
 
 private:
 	T* m_Data;
-	int m_Size;    //кол-во элемнтов в стеке
-	int m_MaxSize; //максимальное кол-во элементво в стеке
+	int m_Size;    //number of elements on the stack
+	int m_MaxSize; //maximum number of items on the stack
 };
 
 template <typename T>
-Stack<T>::Stack() //конструктор 
+Stack<T>::Stack() //constructor
 {
 	m_Size    = 0;
 	m_MaxSize = 1;
@@ -149,13 +149,13 @@ Stack<T>::Stack() //конструктор
 };
 
 template <typename T>
-Stack<T>::~Stack() //деструктор
+Stack<T>::~Stack() //destructor
 {
 	delete[] m_Data;
 };
 
 template <typename T>
-void Stack<T>::display() //функция выводящая элементы стека
+void Stack<T>::display() //function that displays stack elements
 {
 	if (m_Size == 0)
 	{
@@ -170,7 +170,7 @@ void Stack<T>::display() //функция выводящая элементы стека
 };
 
 template <typename T>
-void Stack<T>::resize(int newsize) //функция выделяющая дополнительную память
+void Stack<T>::resize(int newsize) //function allocating additional memory
 {
 	T* newdata = new T[newsize];
 	for (int i = 0; i < m_Size; ++i)
@@ -181,7 +181,7 @@ void Stack<T>::resize(int newsize) //функция выделяющая дополнительную память
 };
 
 template <typename T>
-void Stack<T>::push(T val) //функция вставки элемента в стек
+void Stack<T>::push(T val) //function to push an item onto the stack
 {
 	if (m_Size == m_MaxSize)
 		resize(1 + m_MaxSize);
@@ -190,7 +190,7 @@ void Stack<T>::push(T val) //функция вставки элемента в стек
 };
 
 template <typename T>
-T Stack<T>::pop() //функция удаления элемента из стека
+T Stack<T>::pop() //function to remove an item from the stack
 {
 	if (m_Size == 0)
 	{
@@ -206,7 +206,7 @@ T Stack<T>::pop() //функция удаления элемента из стека
 };
 
 template <typename T>
-T Stack<T>::peek() //функция вовзращающая вершину стека
+T Stack<T>::peek() //stack top function
 {
 	if (m_Size == 0)
 	{
@@ -219,13 +219,13 @@ T Stack<T>::peek() //функция вовзращающая вершину стека
 };
 
 template <typename T>
-int Stack<T>::count() //функция возвращаяющая кол-во элементов в стеке
+int Stack<T>::count() //function returns the number of elements in the stack
 {
 	return m_Size;
 };
 
 template <typename T>
-void Stack<T>::reverse() //функция реверсирующая стек
+void Stack<T>::reverse() //reverse stack function
 {
 	if (m_Size > 0) {
 		for (int i = 0, j = m_Size - 1; i < j; i++, j--) {

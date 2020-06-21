@@ -16,7 +16,7 @@ public:
 	T pop();
 	T peek();
 	int count();
-	friend void swap(Vector<T>& m1, Vector<T>& m2)//обмен данными между структурами;
+	friend void swap(Vector<T>& m1, Vector<T>& m2)//function of data exchange between structures
 	{
 		if (m1.m_Size == m2.m_Size)
 		{
@@ -133,12 +133,12 @@ public:
 
 private:
 	T* m_Data;
-	int m_Size;    //кол-во элементов в очереди
-	int m_MaxSize; //максимальное кол-во элементов в очереди
+	int m_Size;    //number of items in the queue
+	int m_MaxSize; //maximum number of items in the queue
 };
 
 template <typename T>
-Vector<T>::Vector() //конструктор
+Vector<T>::Vector() //constructor
 {
 	m_Size    = 0;
 	m_MaxSize = 1;
@@ -146,13 +146,13 @@ Vector<T>::Vector() //конструктор
 };
 
 template <typename T>
-Vector<T>::~Vector() //деструктор
+Vector<T>::~Vector() //destructor
 {
 	delete[] m_Data;
 };
 
 template <typename T>
-void Vector<T>::display() //функци€ вывод€ща€ элементы очереди 
+void Vector<T>::display() //function that displays the elements of the queue
 {
 	if (m_Size == 0)
 	{
@@ -167,7 +167,7 @@ void Vector<T>::display() //функци€ вывод€ща€ элементы очереди
 };
 
 template <typename T>
-void Vector<T>::resize(int newsize) //функци€ выдел€юща€ дополнительную пам€ть
+void Vector<T>::resize(int newsize) //function allocating additional memory
 {
 	T* newdata = new T[newsize];
 	for (int i = 0; i < m_Size; ++i)
@@ -178,7 +178,7 @@ void Vector<T>::resize(int newsize) //функци€ выдел€юща€ дополнительную пам€ть
 };
 
 template <typename T>
-void Vector<T>::push(T val) //функци€ добавл€ща€ элемент в вектор
+void Vector<T>::push(T val) //function adding an element to a vector
 {
 	if (m_Size == m_MaxSize)
 		resize(1 + m_MaxSize);
@@ -187,7 +187,7 @@ void Vector<T>::push(T val) //функци€ добавл€ща€ элемент в вектор
 };
 
 template <typename T>
-T Vector<T>::pop() //функци€ удал€юща€ элемент из вектора
+T Vector<T>::pop() //function removing an element from a vector
 {
 	if (m_Size == 0)
 	{
@@ -203,7 +203,7 @@ T Vector<T>::pop() //функци€ удал€юща€ элемент из вектора
 };
 
 template <typename T>
-T& Vector<T>::at(int i) //функци€ позволюща€ получить доступ к произвольному элемету вектора
+T& Vector<T>::at(int i) //function allowing access to an arbitrary vector element
 {
 	if ((i >= 0) && (i < m_Size))
 	{
@@ -216,7 +216,7 @@ T& Vector<T>::at(int i) //функци€ позволюща€ получить доступ к произвольному эле
 };
 
 template <typename T>
-T Vector<T>::peek() //функци€ возвращающа€ вершину вектора
+T Vector<T>::peek() //function allowing access to an arbitrary vector element
 {
 	if (m_Size == 0)
 	{
@@ -229,7 +229,8 @@ T Vector<T>::peek() //функци€ возвращающа€ вершину вектора
 };
 
 template <typename T>
-int Vector<T>::count() //функци€ возвращаю€ща€ кол-во элементов в очереди
+int Vector<T>::count() //function returns the number of elements in the queue
+
 {
 
 	return m_Size;
@@ -237,7 +238,7 @@ int Vector<T>::count() //функци€ возвращаю€ща€ кол-во элементов в очереди
 };
 
 template <typename T>
-void Vector<T>::reverse()// функци€ реверсирующа€ вектор
+void Vector<T>::reverse()// reverse vector function
 {
 	if (m_Size > 0)
 	{

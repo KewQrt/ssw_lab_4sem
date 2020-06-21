@@ -16,7 +16,7 @@ public:
 	T pop();
 	T peek();
 	int count();
-	friend void swap(Queue<T>& m1, Queue<T>& m2) //обмен данными между структурами;
+	friend void swap(Queue<T>& m1, Queue<T>& m2) //function of data exchange between structures
 	{
 		if (m1.m_Size == m2.m_Size)
 		{
@@ -139,14 +139,14 @@ public:
 
 private:
 	T* m_Data;
-	int m_Size; //кол-во элементов в стеке
-	int m_MaxSize; //максимальное кол-во элементов в стеке
-	int m_head; //начало очереди
-	int m_tail; //конец очереди
+	int m_Size; //number of items on the stack
+	int m_MaxSize; //maximum number of items on the stack
+	int m_head; //queue start
+	int m_tail; //end of queue
 };
 
 template <typename T>
-Queue<T>::Queue() //конструктор
+Queue<T>::Queue() //constructor
 {
 	m_Size    = 0;
 	m_MaxSize = 1;
@@ -156,13 +156,13 @@ Queue<T>::Queue() //конструктор
 };
 
 template <typename T>
-Queue <T>::~Queue() //деструктор
+Queue <T>::~Queue() //destructor
 {
 	delete[] m_Data;
 };
 
 template <typename T>
-void Queue<T>::display() //функция выводящая элементы очереди
+void Queue<T>::display() //function that displays the elements of the queue
 {
 	cout << "Output elements queue" << endl;
 	for (int i = m_tail - 1; i >= m_head; i--)
@@ -170,7 +170,7 @@ void Queue<T>::display() //функция выводящая элементы очереди
 };
 
 template <typename T>
-void Queue<T>::resize(int newsize) //функция выделяющая дополнительную память 
+void Queue<T>::resize(int newsize) //function allocating additional memory
 {
 	T* newdata = new T[newsize];
 	for (int i = 0; i < m_Size; ++i)
@@ -181,7 +181,7 @@ void Queue<T>::resize(int newsize) //функция выделяющая дополнительную память
 };
 
 template <typename T>
-void Queue<T>::push(T val) //функция вставки элемента в очередеь
+void Queue<T>::push(T val) //function to insert an item into the queue
 {
 	if (m_Size == m_MaxSize)
 		resize(1 + m_MaxSize);
@@ -191,7 +191,7 @@ void Queue<T>::push(T val) //функция вставки элемента в очередеь
 };
 
 template <typename T>
-T Queue<T>::pop() //функция удаления элемента из очереди
+T Queue<T>::pop() //function to remove an item from the queue
 {
 	if (m_head != m_tail)
 	{
@@ -207,7 +207,7 @@ T Queue<T>::pop() //функция удаления элемента из очереди
 };
 
 template <typename T>
-T Queue<T>::peek() //функция возвращающая вершину очереди
+T Queue<T>::peek() //function that returns the top of the queue
 {
 	if (m_Size == 0)
 	{
@@ -220,7 +220,7 @@ T Queue<T>::peek() //функция возвращающая вершину очереди
 };
 
 template <typename T>
-int Queue<T>::count() //функция возвращающая кол-во элементов в очереди
+int Queue<T>::count() //function returns the number of elements in the queue
 {
 
 	return m_Size;
@@ -228,7 +228,7 @@ int Queue<T>::count() //функция возвращающая кол-во элементов в очереди
 };
 
 template <typename T>
-void Queue<T>::reverse() //функция реверсирующая очередь
+void Queue<T>::reverse() //reverse queue function
 {
 	if (m_Size > 0)
 	{
