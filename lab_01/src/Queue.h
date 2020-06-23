@@ -46,9 +46,9 @@ public:
 		l            = m1.m_MaxSize;
 		m1.m_MaxSize = m2.m_MaxSize;
 		m2.m_MaxSize = l;
-		l            = m2.tail;
-		m2.tail      = m1.tail;
-		m1.tail      = l;
+		l            = m2.m_tail;
+		m2.m_tail    = m1.m_tail;
+		m1.m_tail    = l;
 
 
 	};
@@ -138,21 +138,17 @@ public:
 	};
 
 private:
-	T* m_Data;
-	int m_Size; //number of items on the stack
-	int m_MaxSize; //maximum number of items on the stack
-	int m_head; //queue start
-	int m_tail; //end of queue
+	T* m_Data{nullptr};
+	int m_Size{0}; //number of items on the stack
+	int m_MaxSize{1}; //maximum number of items on the stack
+	int m_head{0}; //queue start
+	int m_tail{0}; //end of queue
 };
 
 template <typename T>
 Queue<T>::Queue() //constructor
 {
-	m_Size    = 0;
-	m_MaxSize = 1;
-	m_head    = 0;
-	m_tail    = 0;
-	m_Data    = new T[m_MaxSize];
+	m_Data = new T[m_MaxSize];
 };
 
 template <typename T>
@@ -164,20 +160,42 @@ Queue <T>::~Queue() //destructor
 template <typename T>
 void Queue<T>::display() //function that displays the elements of the queue
 {
-	cout << "Output elements queue" << endl;
-	for (int i = m_tail - 1; i >= m_head; i--)
-		cout << endl << m_Data[i];
+	if (m_Size == 0)
+	{
+		throw out_of_range("Vector is empty");
+	}
+	else
+	{
+		cout << "\nOutput elements queue:";
+		for (int i = m_tail-1; i >= m_head; i--)
+			cout << endl << m_Data[i];
+	}
+	cout << endl;
 };
 
 template <typename T>
 void Queue<T>::resize(int newsize) //function allocating additional memory
 {
 	T* newdata = new T[newsize];
-	for (int i = 0; i < m_Size; ++i)
-		newdata[i] = m_Data[i];
-	delete[] m_Data;
-	m_Data    = newdata;
-	m_MaxSize = newsize;
+	if (m_head == 0)
+	{
+		for (int i = 0; i < m_Size; i++)
+			newdata[i] = m_Data[i];
+		delete[] m_Data;
+		m_Data = newdata;
+		m_MaxSize = newsize;
+	}
+	else if(m_head > 0)
+	{
+		for (int i = 1; i <= m_Size; i++)
+			newdata[i-1] = m_Data[i];
+		delete[] m_Data;
+		m_Data = newdata;
+		m_MaxSize = newsize;
+		m_head--;
+		m_tail--;
+	}
+
 };
 
 template <typename T>
@@ -196,14 +214,14 @@ T Queue<T>::pop() //function to remove an item from the queue
 	if (m_head != m_tail)
 	{
 		m_head++;
-		return m_Data[m_head - 1];
+		m_Size--;
+		resize(m_MaxSize - 1);
 	}
 	else
 	{
 		throw runtime_error("Vector is empty");
 	}
-	if (m_Size > 0 && m_Size < m_MaxSize - 1)
-		resize(m_MaxSize - 1);
+	
 };
 
 template <typename T>

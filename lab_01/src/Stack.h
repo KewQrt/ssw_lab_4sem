@@ -135,17 +135,15 @@ public:
 	};
 
 private:
-	T* m_Data;
-	int m_Size;    //number of elements on the stack
-	int m_MaxSize; //maximum number of items on the stack
+	T* m_Data{nullptr};
+	int m_Size{0};    //number of elements on the stack
+	int m_MaxSize{1}; //maximum number of items on the stack
 };
 
 template <typename T>
 Stack<T>::Stack() //constructor
 {
-	m_Size    = 0;
-	m_MaxSize = 1;
-	m_Data    = new T[m_MaxSize];
+	m_Data = new T[m_MaxSize];
 };
 
 template <typename T>
@@ -163,10 +161,11 @@ void Stack<T>::display() //function that displays stack elements
 	}
 	else
 	{
-		cout << "Output elements stack" << endl;
+		cout << "\nOutput elements stack:";
 		for (int i = m_Size - 1; i >= 0; i--)
 			cout << endl << m_Data[i];
 	}
+	cout << endl;
 };
 
 template <typename T>
@@ -198,10 +197,10 @@ T Stack<T>::pop() //function to remove an item from the stack
 	}
 	else
 	{
-		--m_Size;
-		return m_Data[m_Size];
-		if (m_Size > 0 && m_Size < m_MaxSize - 1)
+		m_Size--;
 			resize(m_MaxSize - 1);
+		//return m_Data[m_Size];
+		
 	}
 };
 
