@@ -193,8 +193,7 @@ T Vector<T>::pop() //function removing an element from a vector
 	}
 	else
 	{
-		--m_Size;
-		if (m_Size > 0 && m_Size < m_MaxSize - 1)
+		m_Size--;
 			resize(m_MaxSize - 1);	
 	}
 };

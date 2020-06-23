@@ -199,7 +199,7 @@ T Stack<T>::pop() //function to remove an item from the stack
 	{
 		m_Size--;
 			resize(m_MaxSize - 1);
-		//return m_Data[m_Size];
+		
 		
 	}
 };
