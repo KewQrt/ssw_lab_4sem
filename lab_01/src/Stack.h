@@ -13,7 +13,7 @@ public:
 	void push(T);
 	void display();
 	void reverse();
-	T pop();
+	void pop();
 	T peek();
 	int count();
 	friend void swap(Stack<T>& m1, Stack<T>& m2) //function of data exchange between structures
@@ -189,7 +189,7 @@ void Stack<T>::push(T val) //function to push an item onto the stack
 };
 
 template <typename T>
-T Stack<T>::pop() //function to remove an item from the stack
+void Stack<T>::pop() //function to remove an item from the stack
 {
 	if (m_Size == 0)
 	{
@@ -198,9 +198,7 @@ T Stack<T>::pop() //function to remove an item from the stack
 	else
 	{
 		m_Size--;
-			resize(m_MaxSize - 1);
-		
-		
+		resize(m_MaxSize - 1);
 	}
 };
 

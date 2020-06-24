@@ -13,7 +13,7 @@ public:
 	void push(T);
 	void display();
 	void reverse();
-	T pop();
+	void pop();
 	T peek();
 	int count();
 	friend void swap(Queue<T>& m1, Queue<T>& m2) //function of data exchange between structures
@@ -209,7 +209,7 @@ void Queue<T>::push(T val) //function to insert an item into the queue
 };
 
 template <typename T>
-T Queue<T>::pop() //function to remove an item from the queue
+void Queue<T>::pop() //function to remove an item from the queue
 {
 	if (m_head != m_tail)
 	{
@@ -240,9 +240,7 @@ T Queue<T>::peek() //function that returns the top of the queue
 template <typename T>
 int Queue<T>::count() //function returns the number of elements in the queue
 {
-
 	return m_Size;
-
 };
 
 template <typename T>

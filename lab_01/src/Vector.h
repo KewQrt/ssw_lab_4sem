@@ -12,8 +12,8 @@ public:
 	void push(T);
 	void display();
 	void reverse();
+	void pop();
 	T& at(int);
-	T pop();
 	T peek();
 	int count();
 	friend void swap(Vector<T>& m1, Vector<T>& m2)//function of data exchange between structures
@@ -185,7 +185,7 @@ void Vector<T>::push(T val) //function adding an element to a vector
 };
 
 template <typename T>
-T Vector<T>::pop() //function removing an element from a vector
+void Vector<T>::pop() //function removing an element from a vector
 {
 	if (m_Size == 0)
 	{
@@ -194,7 +194,7 @@ T Vector<T>::pop() //function removing an element from a vector
 	else
 	{
 		m_Size--;
-			resize(m_MaxSize - 1);	
+	    resize(m_MaxSize - 1);	
 	}
 };
 
@@ -228,9 +228,7 @@ template <typename T>
 int Vector<T>::count() //function returns the number of elements in the queue
 
 {
-
 	return m_Size;
-
 };
 
 template <typename T>
