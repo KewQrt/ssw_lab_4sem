@@ -162,7 +162,7 @@ void Queue<T>::display() //function that displays the elements of the queue
 {
 	if (m_Size == 0)
 	{
-		throw out_of_range("Vector is empty");
+		throw runtime_error("Queue is empty");
 	}
 	else
 	{
@@ -219,7 +219,7 @@ void Queue<T>::pop() //function to remove an item from the queue
 	}
 	else
 	{
-		throw runtime_error("Vector is empty");
+		throw runtime_error("Queue is empty");
 	}
 	
 };
@@ -229,7 +229,7 @@ T Queue<T>::peek() //function that returns the top of the queue
 {
 	if (m_Size == 0)
 	{
-		throw out_of_range("Vector is empty");
+		throw out_of_range("Queue is empty");
 	}
 	else
 	{

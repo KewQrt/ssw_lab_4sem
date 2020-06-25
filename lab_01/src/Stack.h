@@ -193,7 +193,7 @@ void Stack<T>::pop() //function to remove an item from the stack
 {
 	if (m_Size == 0)
 	{
-		throw out_of_range("Vector is empty");
+		throw runtime_error("Queue is empty");
 	}
 	else
 	{
@@ -207,7 +207,7 @@ T Stack<T>::peek() //stack top function
 {
 	if (m_Size == 0)
 	{
-		throw out_of_range("Vecctor is empty");
+		throw out_of_range("Queue is empty");
 	}
 	else
 	{
